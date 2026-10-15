@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Discord Exporter</title>
+<style>
+  :root{--bg:#1e1f22;--bg2:#2b2d31;--bg3:#111214;--fg:#dbdee1;--dim:#949ba4;--acc:#5865f2;--acch:#4752c4;--ok:#23a55a;--warn:#f0b132;--err:#f23f43;--bd:#3f4147}
+  *{box-sizing:border-box}html,body{margin:0;padding:0}
+  body{width:540px;background:var(--bg);color:var(--fg);font:13px/1.4 "gg sans","Segoe UI",system-ui,sans-serif}
+  header{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:var(--bg2);border-bottom:1px solid var(--bd)}
+  header h1{margin:0;font-size:14px;font-weight:600}
+  .pill{font-size:11px;padding:3px 8px;border-radius:10px;border:1px solid var(--bd);color:var(--dim)}
+  .pill.ok{color:var(--ok);border-color:var(--ok)}.pill.warn{color:var(--warn);border-color:var(--warn)}.pill.err{color:var(--err);border-color:var(--err)}
+  main{padding:14px;max-height:580px;overflow-y:auto}
+  .fld{display:block;margin-bottom:10px}
+  .fld span{display:block;margin-bottom:5px;font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--dim)}
+  input[type=text],input[type=date],textarea,input[type=number]{width:100%;padding:9px 11px;border-radius:5px;border:1px solid var(--bd);background:var(--bg3);color:var(--fg);font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:12px;outline:none}
+  input:focus,textarea:focus{border-color:var(--acc)}
+  textarea{resize:vertical;min-height:34px;max-height:120px;line-height:1.4}
+  .btn{width:100%;padding:10px;border:none;border-radius:5px;background:var(--acc);color:#fff;font-size:13px;font-weight:600;cursor:pointer}
+  .btn:hover:not(:disabled){background:var(--acch)}
+  .btn:disabled{background:#4a4d54;color:#9da1a8;cursor:not-allowed}
+  .btn+.btn{margin-top:8px}
+  .btn.ghost{background:transparent;border:1px solid var(--bd);color:var(--fg)}
+  .btn.ghost:hover:not(:disabled){background:var(--bg2)}
+  .row{display:flex;gap:8px}.row .btn{margin-top:0}
+  details{border:1px solid var(--bd);border-radius:5px;margin-bottom:10px;background:var(--bg3)}
+  details summary{padding:8px 10px;cursor:pointer;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--dim);user-select:none}
+  details[open] summary{border-bottom:1px solid var(--bd)}
+  details .body{padding:10px}
+  .chk{display:flex;align-items:center;gap:6px;font-size:12px;margin-bottom:6px;cursor:pointer}
+  .chk input{accent-color:var(--acc)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .panel{margin-top:12px;border:1px solid var(--bd);border-radius:6px;overflow:hidden;display:none}
+  .panel.open{display:block}
+  .phead{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--bg2);border-bottom:1px solid var(--bd);font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--dim)}
+  .phead .mini{font-size:11px;text-transform:none;letter-spacing:0;color:var(--acc);cursor:pointer;background:none;border:none;padding:0}
+  .phead .mini:hover{text-decoration:underline}
+  .list{max-height:220px;overflow-y:auto;background:var(--bg3)}
+  .r{display:flex;align-items:center;gap:8px;padding:6px 10px;border-bottom:1px solid #1a1b1e;cursor:pointer;font-size:12px;user-select:none}
+  .r:last-child{border-bottom:none}.r:hover{background:#17181b}
+  .r input{accent-color:var(--acc);flex-shrink:0}
+  .r .nm{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .r .tg{font-size:10px;padding:1px 5px;border:1px solid var(--bd);border-radius:8px;flex-shrink:0;color:var(--dim)}
+  .r.dm .tg{color:var(--ok);border-color:var(--ok)}.r.gd .tg{color:var(--acc);border-color:var(--acc)}
+  .r.sub{padding-left:30px;font-size:11px;color:var(--dim);background:#0d0e10}
+  .prog{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;margin-top:12px}
+  .prog #bar{height:100%;width:0;background:var(--acc);transition:width .3s}
+  .ptxt{margin-top:6px;font-size:11px;color:var(--dim);min-height:14px}
+  .log{margin:12px 0 0;padding:10px;background:var(--bg3);border:1px solid var(--bd);border-radius:5px;max-height:200px;overflow-y:auto;font-family:ui-monospace,Consolas,monospace;font-size:11px;line-height:1.5;white-space:pre-wrap;word-break:break-all;color:#b5bac1}
+  .log:empty::before{content:"idle";color:#5c6068}
+  .targetlist{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+  .targetlist .tag{background:var(--bg2);border:1px solid var(--bd);border-radius:4px;padding:3px 8px;font-size:11px;font-family:ui-monospace,monospace}
+  footer{padding:8px 14px;border-top:1px solid var(--bd);font-size:10px;color:var(--dim);text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <h1>Discord Exporter</h1>
+  <div id="status" class="pill">loading…</div>
+</header>
+<main>
+  <label class="fld"><span>Discord Token</span><textarea id="token" placeholder="paste user token" spellcheck="false" autocomplete="off"></textarea></label>
+
+  <label class="fld">
+    <span>Target User ID(s) — comma-separated for multi</span>
+    <input id="target" type="text" placeholder="123456789012345678, 987654321098765432" autocomplete="off" spellcheck="false">
+  </label>
+  <div class="targetlist" id="targetList"></div>
+
+  <details>
+    <summary>Filters — all off by default</summary>
+    <div class="body">
+      <div class="grid2">
+        <label class="fld" style="margin:0"><span>From</span><input id="dateFrom" type="date"></label>
+        <label class="fld" style="margin:0"><span>To</span><input id="dateTo" type="date"></label>
+      </div>
+      <label class="fld" style="margin-top:10px"><span>Keyword (regex, optional)</span><input id="kw" type="text" placeholder="leave empty for all"></label>
+      <label class="fld"><span>Min length (chars)</span><input id="minLen" type="number" placeholder="0" min="0" value="0"></label>
+      <label class="fld"><span>Channel whitelist (regex)</span><input id="chanWhite" type="text" placeholder="leave empty for all"></label>
+      <label class="fld"><span>Channel blacklist (regex)</span><input id="chanBlack" type="text" placeholder="leave empty for none"></label>
+      <label class="chk"><input id="attachOnly" type="checkbox"><span>Only messages with attachments</span></label>
+      <label class="chk"><input id="replyOnly" type="checkbox"><span>Only messages that are replies</span></label>
+    </div>
+  </details>
+
+  <details open>
+    <summary>Advanced — max on by default</summary>
+    <div class="body">
+      <label class="chk"><input id="incremental" type="checkbox"><span>Incremental (skip already-exported)</span></label>
+      <label class="chk"><input id="includeThreads" type="checkbox" checked><span>Include threads</span></label>
+      <label class="chk"><input id="includeForwards" type="checkbox" checked><span>Include forwarded content</span></label>
+      <label class="chk"><input id="includeAvatars" type="checkbox" checked><span>Download avatars + server icons</span></label>
+      <label class="chk"><input id="reactionDetail" type="checkbox" checked><span>Fetch who reacted</span></label>
+      <label class="chk"><input id="linkPreviews" type="checkbox" checked><span>Fetch OG link previews</span></label>
+      <label class="chk"><input id="mediaGallery" type="checkbox" checked><span>Media gallery at top of channel</span></label>
+      <label class="chk"><input id="threadView" type="checkbox" checked><span>Nested reply threading view</span></label>
+      <button class="btn ghost" id="clearCache" style="margin-top:8px">Clear incremental cache</button>
+    </div>
+  </details>
+
+  <button id="scanBtn" class="btn" disabled>Scan</button>
+
+  <div id="panel" class="panel">
+    <div class="phead">
+      <span id="pTitle">Target's servers</span>
+      <div><button class="mini" id="allBtn">all</button> · <button class="mini" id="noneBtn">none</button> · <button class="mini" id="chBtn">channels</button></div>
+    </div>
+    <div id="list" class="list"></div>
+  </div>
+
+  <button id="exportBtn" class="btn" style="display:none">Export Selected</button>
+  <div id="runCtl" style="display:none;margin-top:8px;gap:8px">
+    <button id="pauseBtn" class="btn ghost" style="margin:0">Pause</button>
+    <button id="resumeBtn" class="btn ghost" style="margin:0;display:none">Resume</button>
+    <button id="cancelBtn" class="btn ghost" style="margin:0">Cancel</button>
+  </div>
+  <button id="retryBtn" class="btn ghost" style="display:none;margin-top:8px">Retry Failed</button>
+
+  <div class="prog"><div id="bar"></div></div>
+  <div id="ptxt" class="ptxt"></div>
+  <pre id="log" class="log"></pre>
+</main>
+<footer>Token stays local. Only talks to discord.com + CDNs.</footer>
+<script src="popup.js"></script>
+</body>
+</html>

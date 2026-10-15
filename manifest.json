@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Discord Exporter",
+  "version": "4.1.0",
+  "description": "Full Discord transcript export with HTML viewer.",
+  "permissions": ["storage", "offscreen", "downloads", "unlimitedStorage"],
+  "background": { "service_worker": "background.js" },
+  "host_permissions": [
+    "https://discord.com/*",
+    "https://cdn.discordapp.com/*",
+    "https://media.discordapp.net/*"
+  ],
+  "action": { "default_popup": "popup.html", "default_title": "Discord Exporter" }
+}
