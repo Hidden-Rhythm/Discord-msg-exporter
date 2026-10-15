@@ -1,342 +1,295 @@
- <div align="center">
+<div align="center">
 
 # 💬 Discord Message Exporter
 
-### Your Discord memories deserve a home. ✨
+**Export your Discord conversations. Keep them organized. Browse them anytime.**
 
-**Scan. Export. Relive.**
-
-A powerful Chromium extension that turns Discord message history into beautiful, searchable HTML archives — complete with transcripts, media, replies, and more.
+A Chromium browser extension for exporting accessible Discord messages into searchable HTML archives and plain-text transcripts, with media support.
 
 <br>
 
-[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/Hidden-Rhythm/Discord-msg-exporter)
-[![Manifest V3](https://img.shields.io/badge/Manifest-V3-34A853?style=for-the-badge)](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3)
-[![JavaScript](https://img.shields.io/badge/JavaScript-Powered-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+<a href="#features">Explore Features</a>
+&nbsp; · &nbsp;
+<a href="#installation">Installation</a>
+&nbsp; · &nbsp;
+<a href="#how-to-use">How to Use</a>
 
-<br>
+<br><br>
 
-### 💭 Don't let your conversations disappear into the scroll.
-
-[ **Explore Features** ](#-features) · [ **Installation** ](#-installation) · [ **How to Use** ](#-how-to-use)
+<img src="https://img.shields.io/badge/Chrome-Extension-4285F4?style=flat-square&logo=googlechrome&logoColor=white" alt="Chrome Extension">
+<img src="https://img.shields.io/badge/Manifest-V3-34A853?style=flat-square" alt="Manifest V3">
+<img src="https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
 
 </div>
 
 ---
 
-## 🌌 What's this all about?
+## What is Discord Message Exporter?
 
-Ever wanted to keep a conversation without endlessly scrolling through Discord?
+Discord conversations can contain messages, attachments, replies, and other details that are difficult to revisit by scrolling through the app.
 
-**Discord Message Exporter** helps you preserve accessible Discord message history in a format you can actually browse, search, and keep.
+**Discord Message Exporter** lets you export accessible message history and save it as an archive on your computer.
 
-Scan for a user, select the conversations you want, customize your filters, and export everything into a downloadable ZIP archive.
+Choose the conversations you want, apply filters, and export the results. The generated archive includes HTML pages for browsing and plain-text transcripts for simpler access.
 
-No more endless scrolling. No more hunting for that one message from months ago. Just your conversations, organized your way. 💜
+## <a id="features"></a>Features
 
-## ✨ Features that hit different
+| Feature | What it does |
+|---|---|
+| 💬 Message Export | Export accessible direct messages and supported server conversations |
+| 🔎 User Scanning | Search for conversations associated with a target user |
+| 🗂️ Channel Selection | Choose which available servers and channels to include |
+| 🌐 HTML Viewer | Browse exported messages through generated HTML pages |
+| 📝 Text Transcripts | Save conversations as `.txt` files |
+| 📎 Media Downloads | Download supported message attachments into the archive |
+| 🔍 Message Search | Search within exported channel pages |
+| ↩️ Reply Context | Preserve supported reply information |
+| 🧵 Thread Support | Include supported thread conversations |
+| 🎛️ Export Filters | Filter messages by date, content, length, and other criteria |
+| 📊 Progress Tracking | Monitor export progress and activity logs |
+| 🔄 Export Controls | Pause, resume, cancel, and retry supported operations |
 
-<table>
-<tr>
-<td width="50%" valign="top">
+Additional options include incremental exports, media galleries, avatar downloads, reaction details, link previews, and nested reply layouts.
 
-### 💬 Message Magic
-
-- Export accessible direct messages
-- Scan servers for a target user
-- Select specific servers and channels
-- Support multiple target user IDs
-- Collect supported thread conversations
-- Preserve supported reply context
-
-</td>
-<td width="50%" valign="top">
-
-### 🎨 Beautiful Archives
-
-- Standalone HTML transcript viewer
-- Plain-text `.txt` transcripts
-- Search messages inside channels
-- Organized channel navigation
-- Message timestamps and author details
-- Nested reply presentation
-
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
-
-### 🖼️ Media Matters
-
-- Download message attachments
-- View images in exported archives
-- Play supported audio and video files
-- Preserve supported embedded previews
-- Optionally include avatars and server icons
-- Detect duplicate media downloads
-
-</td>
-<td width="50%" valign="top">
-
-### 🎛️ You're in Control
-
-- Date-range filtering
-- Keyword and regex filtering
-- Minimum message length
-- Channel include/exclude patterns
-- Attachments-only and replies-only filters
-- Pause, resume, cancel, and retry controls
-
-</td>
-</tr>
-</table>
-
-### ⚡ And there's more...
-
-- 📦 Downloadable ZIP archives
-- 🔄 Incremental exports using saved checkpoints
-- 🧵 Thread collection options
-- 😀 Optional reaction-user details
-- 🔗 Optional link-preview enrichment
-- 🖼️ Optional media gallery
-- 📊 Export progress and activity logs
-- 🧹 Cache controls and failed-download retry support
-
-*Some details depend on Discord access, available message data, and the options you enable.*
+The information available in an export depends on Discord access, the selected settings, and the data available when the export runs.
 
 ---
 
-## 🪄 How the magic works
+## How it works
 
 <div align="center">
 
 ```text
-       💬 YOUR DISCORD HISTORY
-                  │
-                  ▼
-       🔎 Scan for a user
-                  │
-                  ▼
-       🗂️ Choose conversations
-                  │
-                  ▼
-       🎛️ Customize your filters
-                  │
-                  ▼
-       ⚡ Export messages & media
-                  │
-                  ▼
-       📦 Download your archive
-                  │
-                  ▼
-       ✨ Browse it whenever you want
+       Open the extension
+               |
+               v
+        Enter user details
+               |
+               v
+        Scan conversations
+               |
+               v
+      Select channels and DMs
+               |
+               v
+         Set export filters
+               |
+               v
+        Start the export
+               |
+               v
+       Save the ZIP archive
+               |
+               v
+       Browse your messages
 ```
 
 </div>
 
-Simple workflow. Organized output. Conversations preserved.
+The extension processes the selected conversations, builds the transcript files, collects supported attachments, and packages the results into a ZIP archive.
 
-## 📦 What's inside the archive?
+## Installation
 
-Your export includes browsable HTML pages and plain-text transcripts, with downloaded media where available.
+This project can be loaded as an unpacked Chrome or compatible Chromium extension.
 
-A typical archive is organized like this:
+### 1. Download the repository
 
-```text
-📦 discord-export/
-│
-├── 📄 index.html
-│
-├── 📂 channels/
-│   ├── 💬 general.html
-│   ├── 📝 general.txt
-│   ├── 💬 random.html
-│   └── 📝 random.txt
-│
-└── 📂 _assets/
-    └── 📂 media/
-        ├── 🖼️ image.png
-        ├── 🎬 video.mp4
-        └── 🎵 audio.mp3
-```
-
-*Illustrative structure — actual filenames and folders depend on the export.*
-
-Open the HTML archive to browse saved conversations, search channel messages, and access downloaded attachments. Prefer something lightweight? The plain-text transcripts have you covered.
-
----
-
-## 🎛️ Customize your export
-
-Not every conversation needs to come along for the ride.
-
-### 🎯 Filters
-
-| Filter | What it does |
-|---|---|
-| 📅 Date range | Narrow the export to a selected period |
-| 🔎 Keyword / regex | Match message content against a pattern |
-| 📏 Minimum length | Skip messages below a chosen character count |
-| ✅ Channel whitelist | Include channels matching a pattern |
-| 🚫 Channel blacklist | Exclude channels matching a pattern |
-| 📎 Attachments only | Keep messages containing attachments |
-| ↩️ Replies only | Keep replies |
-
-### 🧪 Advanced options
-
-| Option | Purpose |
-|---|---|
-| 🔄 Incremental export | Reuse saved checkpoints to avoid re-exporting previously covered messages |
-| 🧵 Include threads | Collect supported thread content |
-| 🖼️ Download avatars | Include available user avatars and server icons |
-| 😀 Reaction details | Retrieve reaction-user information where available |
-| 🔗 Link previews | Enrich supported URLs with preview metadata |
-| 🖼️ Media gallery | Add a gallery to channel pages |
-| 💬 Nested replies | Display supported reply context in a threaded layout |
-
-You can also monitor progress, pause or resume a running export, cancel it, retry failed downloads, and clear the incremental cache.
-
----
-
-## 🚀 Installation
-
-Ready to give your conversations a little backup plan? Let's go. ✨
-
-### 1️⃣ Download the project
-
-Clone the repository:
+Clone the project:
 
 ```bash
 git clone https://github.com/Hidden-Rhythm/Discord-msg-exporter.git
 cd Discord-msg-exporter
 ```
 
-Alternatively, click **Code → Download ZIP** on GitHub and extract the downloaded folder.
+Or use **Code → Download ZIP** on GitHub and extract the archive.
 
-### 2️⃣ Open Chrome Extensions
+### 2. Open the extensions page
 
-Navigate to:
+In Chrome, visit:
 
 ```text
 chrome://extensions/
 ```
 
-Using another Chromium-based browser? Open its extensions management page instead.
+### 3. Enable Developer mode
 
-### 3️⃣ Enable Developer mode
+Turn on **Developer mode** on the extensions page.
 
-Switch on **Developer mode** in the extensions page.
+### 4. Load the extension
 
-### 4️⃣ Load the extension
+Click **Load unpacked** and select the project directory containing `manifest.json`.
 
-Click **Load unpacked** and select the project folder containing `manifest.json`.
+### 5. Open the extension
 
-### 5️⃣ You're in! 🎉
-
-Pin the extension if you like, click its icon, and explore the exporter interface.
-
-> **Note:** This project uses Chrome's Manifest V3 extension architecture. Browser support depends on compatibility with the APIs it uses.
+Pin the extension if you want quick access, then open its popup to access the exporter controls.
 
 ---
 
-## 🕹️ How to use
+## <a id="how-to-use"></a>How to Use
 
-1. **Open** the extension popup.
-2. **Enter your Discord user token** for an account you own or are authorized to use.
-3. **Enter the target user's Discord ID.**
-4. **Scan** for accessible conversations.
-5. **Select** the relevant DMs, servers, or channels.
-6. **Customize** your filters and advanced settings.
-7. **Export** your selection and watch the progress log.
-8. **Open** the resulting archive and browse your saved conversations.
+### Step 1 — Open the popup
 
-### 💡 Pro tip
+Click the Discord Message Exporter icon in your browser's toolbar.
 
-Try a small export first. One channel and a short date range make it easier to check the output before starting a much larger export.
+### Step 2 — Enter the required details
+
+Follow the fields shown in the extension to provide the required Discord account information and target user ID.
+
+**Security note:** A Discord user token is highly sensitive. Never share it, post it in screenshots, or commit it to GitHub. Only use account access you own or are explicitly authorized to use. Review how the extension handles and stores credentials before entering them.
+
+### Step 3 — Scan for conversations
+
+Use the scan control to find accessible conversations associated with the target user.
+
+Wait for the scan to finish and check the results before continuing.
+
+### Step 4 — Choose what to export
+
+Select the direct messages, servers, channels, or supported threads you want included.
+
+You don't have to export everything at once. Starting with one conversation is a good way to test the output.
+
+### Step 5 — Configure the options
+
+Depending on your needs, you can adjust:
+
+- Date ranges
+- Keyword or regular-expression filters
+- Minimum message length
+- Included and excluded channels
+- Attachment-only or replies-only filtering
+- Available media, avatar, thread, and reply options
+
+### Step 6 — Start and monitor the export
+
+Start the export and follow the progress information in the popup.
+
+Use the available pause, resume, cancel, or retry controls when needed.
+
+### Step 7 — Open your archive
+
+Once the export finishes, open the downloaded ZIP file and extract it.
+
+Open the generated `index.html` to browse the archive. Individual channel pages and text transcripts are available where generated.
 
 ---
 
-## 🧰 Built with
+## Inside the exported archive
 
-<div align="center">
+A typical export may look like this:
 
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![HTML5](https://img.shields.io/badge/HTML5-Viewer-E34F26?style=flat-square&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-Interface-1572B6?style=flat-square&logo=css3&logoColor=white)
-![Chrome](https://img.shields.io/badge/Chrome-Extensions-4285F4?style=flat-square&logo=googlechrome&logoColor=white)
+```text
+discord-export/
+│
+├── index.html
+│
+├── channels/
+│   ├── general.html
+│   ├── general.txt
+│   ├── random.html
+│   └── random.txt
+│
+└── _assets/
+    └── media/
+        ├── image.png
+        ├── video.mp4
+        └── audio.mp3
+```
 
-</div>
+*This is an example layout. Actual filenames and folders depend on the exported conversations and available media.*
 
-| Technology | Role |
+### HTML viewer
+
+Use the HTML pages to navigate the saved conversations, search messages, inspect supported reply context, and view available attachments.
+
+### Plain-text transcripts
+
+The `.txt` files provide a simpler, lightweight version of the exported conversation.
+
+### Media files
+
+Supported attachments can be saved under `_assets/media/` so they can be accessed alongside the exported archive.
+
+---
+
+## Export options
+
+| Option | Purpose |
 |---|---|
-| JavaScript | Message processing and extension logic |
-| Chrome Extensions API | Browser integration and downloads |
-| Manifest V3 | Extension architecture |
-| Discord API endpoints | Retrieve accessible Discord data |
-| JSZip | Generate ZIP archives |
-| HTML & CSS | Build the standalone transcript viewer |
+| Date range | Limit the export to a particular period |
+| Keyword / Regex | Match messages against text or a regular expression |
+| Minimum length | Exclude messages shorter than the specified length |
+| Channel whitelist | Include channels matching a pattern |
+| Channel blacklist | Exclude channels matching a pattern |
+| Attachments only | Keep messages containing attachments |
+| Replies only | Keep replies |
+| Incremental export | Reuse saved checkpoints where supported |
+| Include threads | Collect supported thread content |
+| Download avatars | Include available avatars and server icons |
+| Reaction details | Collect supported reaction-user information |
+| Link previews | Enrich supported links with preview information |
+| Media gallery | Generate a gallery for supported media |
+| Nested replies | Display supported reply context in a nested layout |
 
-### 📁 Project structure
+Available settings may vary with the extension version and the data Discord makes accessible.
+
+---
+
+## Project structure
 
 ```text
 Discord-msg-exporter/
-├── manifest.json     # Extension configuration
-├── popup.html        # Popup interface
-├── popup.js          # Popup interactions
-├── background.js     # Background service worker
-├── offscreen.html    # Offscreen document
-├── offscreen.js      # Export engine and HTML generation
-├── jszip.min.js      # ZIP archive library
-└── README.md         # You are here!
+│
+├── manifest.json      # Extension configuration
+├── popup.html         # Popup interface
+├── popup.js           # Popup controls and interactions
+├── background.js      # Background service worker
+├── offscreen.html     # Offscreen document
+├── offscreen.js       # Export processing and HTML generation
+└── jszip.min.js       # ZIP archive generation
 ```
 
----
-
-## 🔐 Privacy isn't optional
-
-This extension can process private conversations and uses a Discord user token. Please take security seriously.
-
-- 🔑 **Protect your token.** It acts as an authentication secret. Never share it or commit it to GitHub.
-- 💾 **Know where it is stored.** The current implementation saves the token in Chrome extension local storage.
-- 📁 **Protect your exports.** Archives may contain private messages, usernames, IDs, attachments, and other personal information.
-- 👀 **Review the code.** Understand the permissions and network requests before installing the extension.
-- 🧹 **Clean up when needed.** Remove stored credentials and sensitive archives when you no longer need them.
-- ⚖️ **Use responsibly.** Only access and export data you're authorized to handle, and follow applicable laws and Discord's Terms of Service.
-
-The extension communicates with Discord and its media CDNs. If link-preview retrieval is enabled, it may also contact URLs found in messages.
-
-**Important:** This is an unofficial project and is not affiliated with or endorsed by Discord.
-
----
-
-## ⚠️ A few things to know
-
-- Exports depend on your account's access and available message history.
-- Discord API changes, permissions, and rate limits can affect results.
-- Some attachments, reactions, or message context may be unavailable.
-- Large exports may take time and consume significant storage.
-- Incremental exports use locally stored checkpoint data.
-
----
-
-## 💜 Made by Hidden-Rhythm
+## Built with
 
 <div align="center">
 
-### Built with curiosity. Designed for convenience.
+<img src="https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
+<img src="https://img.shields.io/badge/HTML5-Viewer-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
+<img src="https://img.shields.io/badge/CSS3-Interface-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3">
+<img src="https://img.shields.io/badge/Chrome-Extensions-4285F4?style=flat-square&logo=googlechrome&logoColor=white" alt="Chrome Extensions">
 
-If this project is useful to you, consider giving it a ⭐ on GitHub!
+</div>
 
-<a href="https://github.com/Hidden-Rhythm/Discord-msg-exporter">
-  <img src="https://img.shields.io/badge/⭐%20Star%20this%20project-Show%20some%20love-8B5CF6?style=for-the-badge" alt="Star this project">
-</a>
+| Technology | Purpose |
+|---|---|
+| JavaScript | Export logic and interface interactions |
+| Chrome Extensions API | Browser integration and downloads |
+| Manifest V3 | Extension architecture |
+| HTML & CSS | Popup interface and transcript viewer |
+| JSZip | Creating downloadable ZIP archives |
 
-<br><br>
+---
 
-[**GitHub Profile →**](https://github.com/Hidden-Rhythm)
+## Notes
+
+- Exports are limited to messages and media the extension can access and process.
+- Large exports may take longer and use additional storage.
+- Discord may change its web application or internal endpoints, which can affect compatibility.
+- Review the source code and permissions before installing the extension.
+- Keep exported archives and account credentials private, especially when they contain personal conversations or attachments.
+
+---
+
+<div align="center">
+
+### Made with ☕ and JavaScript
+
+**Built by Hidden Rhythm**
+
+<sub>Keeping conversations accessible, one export at a time.</sub>
 
 <br>
 
-<sub>💬 Conversations fade. Memories don't have to.</sub>
+<a href="https://github.com/Hidden-Rhythm/Discord-msg-exporter">GitHub Repository</a>
 
 </div>
